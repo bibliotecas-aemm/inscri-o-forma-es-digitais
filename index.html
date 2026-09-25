@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DigiEvoluir — Passaporte de Formação</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%232e5238'/%3E%3Cpath d='M26 36 Q38 31 50 37 Q62 31 74 36 L74 64 Q62 59 50 65 Q38 59 26 64 Z M50 37 L50 65' fill='none' stroke='%23e9cf6a' stroke-width='5' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Nunito+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --salva-50: #f4f7f1; --salva-100: #e6eee0; --salva-200: #cfdcc6;
+    --salva-400: #8fae85; --salva-600: #557a52; --salva-800: #2e4a33; --salva-900: #1f3325;
+    --limao-100: #fdf6d3; --limao-300: #f6e27a; --limao-500: #e5c33b;
+    --creme: #fbfaf5; --papel: #fff; --cinza: #66756a;
+    --f-titulo: "Fraunces", Georgia, serif;
+    --f-texto: "Nunito Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    display: grid; place-items: center;
+    padding: 24px 16px;
+    font-family: var(--f-texto);
+    color: var(--salva-900);
+    background:
+      radial-gradient(circle at 10% 12%, rgba(246, 226, 122, .45) 0 140px, transparent 141px),
+      radial-gradient(circle at 92% 95%, rgba(143, 174, 133, .35) 0 220px, transparent 221px),
+      linear-gradient(180deg, var(--salva-100), var(--creme));
+    -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none;
+    background-image: radial-gradient(rgba(46, 74, 51, .08) 1px, transparent 1.2px);
+    background-size: 18px 18px;
+  }
+  .cartao {
+    position: relative;
+    width: 100%; max-width: 520px;
+    padding: 40px 32px 30px;
+    text-align: center;
+    background: var(--papel);
+    border: 1px solid var(--salva-200);
+    border-radius: 24px;
+    box-shadow: 0 2px 4px rgba(31, 51, 37, .06), 0 18px 44px rgba(31, 51, 37, .12);
+    animation: surgir .4s ease-out;
+  }
+  @keyframes surgir { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  .emblema { width: 76px; height: 76px; margin: 0 auto 18px; display: block; }
+  .agrupamento {
+    margin: 0 0 10px;
+    font-size: .74rem; font-weight: 800; letter-spacing: .16em; text-transform: uppercase;
+    color: var(--salva-600);
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--f-titulo); font-weight: 700;
+    font-size: clamp(2rem, 7vw, 2.7rem); line-height: 1.1;
+  }
+  h1 .marca {
+    background: linear-gradient(transparent 62%, var(--limao-300) 62%, var(--limao-300) 92%, transparent 92%);
+    padding: 0 .06em;
+  }
+  .sub {
+    margin: 6px 0 0;
+    font-family: var(--f-titulo); font-weight: 500; font-size: 1.25rem;
+    color: var(--salva-600);
+  }
+  .lema { margin: 14px auto 0; max-width: 30em; font-size: .95rem; color: var(--cinza); line-height: 1.5; }
+
+  .bibliotecas { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin: 20px 0 26px; }
+  .biblio {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 3px 10px 3px 8px;
+    font-size: .7rem; font-weight: 800; letter-spacing: .06em;
+    color: var(--salva-800); background: var(--salva-50);
+    border: 1px solid var(--salva-200); border-radius: 999px;
+  }
+  .biblio::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--limao-500); }
+
+  .botao {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 14px 30px;
+    font: inherit; font-size: 1.05rem; font-weight: 800;
+    color: var(--salva-900); text-decoration: none;
+    background: var(--limao-300);
+    border-radius: 999px;
+    box-shadow: 0 3px 0 var(--limao-500);
+    transition: background .15s, transform .08s, box-shadow .08s;
+  }
+  .botao:hover { background: var(--limao-500); }
+  .botao:active { transform: translateY(3px); box-shadow: 0 0 0 var(--limao-500); }
+  .botao:focus-visible { outline: 3px solid var(--salva-400); outline-offset: 3px; }
+  .botao svg { width: 18px; height: 18px; }
+
+  .estado { margin: 16px 0 0; font-size: .85rem; color: var(--cinza); min-height: 1.3em; }
+  .barra { height: 4px; margin: 10px auto 0; max-width: 180px; background: var(--salva-100); border-radius: 4px; overflow: hidden; }
+  .barra span { display: block; height: 100%; width: 0; background: var(--salva-600); border-radius: 4px; animation: encher 2.5s linear forwards; }
+  @keyframes encher { to { width: 100%; } }
+  .parar { margin-top: 8px; font: inherit; font-size: .8rem; color: var(--salva-600); background: none; border: none; text-decoration: underline; cursor: pointer; }
+
+  .nota {
+    margin: 24px 0 0; padding: 12px 14px;
+    font-size: .8rem; line-height: 1.5; text-align: left; color: var(--salva-800);
+    background: var(--limao-100); border: 1px solid #f1e4a6; border-radius: 12px;
+  }
+  .rodape { margin: 22px 0 0; font-size: .72rem; color: var(--cinza); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .cartao, .barra span { animation: none; }
+    .barra span { width: 100%; }
+  }
+</style>
+</head>
+<body>
+  <main class="cartao">
+    <svg class="emblema" viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="50" r="47" fill="#2e5238"/>
+      <circle cx="50" cy="50" r="40" fill="none" stroke="#e9cf6a" stroke-width="1"/>
+      <path d="M26 36 Q38 31 50 37 Q62 31 74 36 L74 64 Q62 59 50 65 Q38 59 26 64 Z" fill="none" stroke="#e9cf6a" stroke-width="2.6" stroke-linejoin="round"/>
+      <path d="M50 37 L50 65" stroke="#e9cf6a" stroke-width="2.4"/>
+      <path d="M22 70 Q50 84 78 70" fill="none" stroke="#e9cf6a" stroke-width="2"/>
+    </svg>
+
+    <p class="agrupamento">Agrupamento de Escolas de Mem Martins</p>
+    <h1><span class="marca">DigiEvoluir</span></h1>
+    <p class="sub">Passaporte de Formação</p>
+    <p class="lema">Registo de presenças e passaportes das formações digitais das Bibliotecas Escolares.</p>
+
+    <div class="bibliotecas" aria-label="Bibliotecas escolares">
+      <span class="biblio">EB SM1</span>
+      <span class="biblio">EB MM2</span>
+      <span class="biblio">EB MAM</span>
+      <span class="biblio">ES MM</span>
+    </div>
+
+    <a class="botao" id="entrar" href="https://script.google.com/macros/s/AKfycbxic9Y2TZxJA5UEK5FeKMunu0i2FxXXqMMiruZcAQh2LSgqV8vdmiaWmAbcX6nt89HYhw/exec" target="_top" rel="noopener">
+      Entrar na app
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+
+    <p class="estado" id="estado" aria-live="polite">A abrir a app…</p>
+    <div class="barra" id="barra" aria-hidden="true"><span></span></div>
+    <button type="button" class="parar" id="parar">Ficar nesta página</button>
+
+    <p class="nota">Entra com a tua conta Google autorizada. Da primeira vez, o Google pode pedir para escolheres a conta e autorizares a app.</p>
+
+    <p class="rodape">Powered by Claude IA · Cristina Faleiro &amp; Sandra Gomes</p>
+  </main>
+
+<script>
+  (function () {
+    var link = document.getElementById('entrar').href;
+    var t = setTimeout(function () { window.location.href = link; }, 2500);
+    document.getElementById('parar').addEventListener('click', function () {
+      clearTimeout(t);
+      document.getElementById('estado').textContent = 'Carrega em «Entrar na app» quando quiseres.';
+      document.getElementById('barra').style.display = 'none';
+      this.style.display = 'none';
+    });
+  })();
+</script>
+</body>
+</html>
